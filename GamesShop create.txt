@@ -1,0 +1,71 @@
+/* Create Tables */
+
+CREATE TABLE Games(
+  GameID	INT 	IDENTITY(1000,1),
+  Title		VARCHAR(50)  	NOT NULL,
+  Publisher VARCHAR(50)  	NOT NULL,
+  Rating	INT  			NOT NULL,
+  Released	DATE	 		NOT NULL,
+  Image		VARCHAR(20)  	DEFAULT('NotFound.png'), 
+  PRIMARY KEY (GameID));
+
+CREATE TABLE Consoles(
+  fkGameID  INT			NOT NULL,
+  Console   VARCHAR(10) NOT NULL,
+  Price 	MONEY      	NOT NULL,
+  PRIMARY KEY (fkGameID, Console),
+  CONSTRAINT FK_Consoles_Games FOREIGN KEY (fkGameID) REFERENCES Games (GameID));
+-- Speed up searches for console type e.g. 'PS4'
+  CREATE INDEX platform on Consoles(Console);
+
+
+CREATE TABLE Sales(
+  SaleID  			INT     		IDENTITY(50000,1),
+  SaleDate 			DATE			NOT NULL ,
+  CustName  		VARCHAR(50)  	NOT NULL ,
+  Address 			VARCHAR(100)  	NULL ,
+  Email   			VARCHAR(50) 	NULL, 
+  DeliveryCharge	MONEY   		NULL,
+  Total				MONEY			NULL,
+  PRIMARY KEY (SaleID));
+
+CREATE TABLE SalesItems(
+  fkSaleID  	INT				NOT NULL,
+  fkGameID  	INT       		NOT NULL,
+  Console   	VARCHAR(10) 	NOT NULL,
+  Title	    	VARCHAR(50)  	NOT NULL,
+  Quantity  	INT       		NOT NULL DEFAULT(1) CONSTRAINT CK_Quantity CHECK (Quantity >= 0),
+  SubTotal  	MONEY			NOT NULL,
+  PRIMARY KEY (fkSaleID, fkGameID, Console),
+  CONSTRAINT FK_Items_Sales FOREIGN KEY (fkSaleID) REFERENCES Sales (SaleID),
+  CONSTRAINT FK_Items_Games FOREIGN KEY (fkGameID) REFERENCES Games (GameID));
+
+
+/* Stored Procedures */
+
+CREATE PROCEDURE [dbo].[spInsertSale]
+	@SaleDate datetime,
+	@CustName varchar(50),
+	@Address varchar(255),
+	@Email varchar(50),
+	@DeliveryCharge money,
+	@Total money,
+	@SaleID int OUTPUT
+AS
+	INSERT INTO Sales VALUES 
+	(@SaleDate, @CustName, @Address, @Email, @DeliveryCharge, @Total)
+	SELECT @SaleID = SCOPE_IDENTITY()
+	
+
+CREATE PROCEDURE [dbo].[spInsertSalesItems]
+	@fkSaleID int,
+	@fkGameID int,
+	@Console varchar(10),
+	@Title varchar(50),
+	@Quantity int,
+	@SubTotal money
+AS
+	INSERT INTO SalesItems VALUES 
+	(@fkSaleID, @fkGameID, @Console, @Title, @Quantity, @SubTotal)
+	
+

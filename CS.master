@@ -1,0 +1,70 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="CS.master.cs" Inherits="CS" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1" runat="server">
+    <title >U35: WAP</title>
+   <meta content = "video games" />
+   
+    <style type="text/css">
+        .style1
+        {
+            width: 960px;
+            height: 264px;
+        }
+        .style2
+        {
+            width: 20px;
+            height: 264px;
+        }
+        .style3
+        {
+            height: 15px;
+        }
+        #form1
+        {
+            height: 456px;
+            width: 1080px;
+        }
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+  
+    
+    <table style="width: 1080px; height: 335px;">
+        <tr>
+            <td colspan="2" ><a name="Header" />
+				<img alt="Header" src="Images/header2.jpg"  />             
+            </td>
+        </tr>
+		
+        <tr>
+            <td valign="top"> <a name="Navigation" />
+                <div style="width: 120px"> 
+					Links
+				</div> 
+                <div style="width: 120px">
+					Menu
+                </div> 
+            </td>
+			
+            <td > <a name="Content" />
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                    
+                </asp:ContentPlaceHolder>
+
+            </td>
+        </tr>
+		
+        <tr>
+            <td colspan="2">
+				Footer
+			</td>
+        </tr>
+    </table>
+     </form>
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+SET IDENTITY_INSERT Games ON;
+INSERT INTO Games(GameID, Title, Publisher, Rating, Released, Image)VALUES
+(1, 'FIFA 09', 'Electronic Arts', 3, '2008-09-26', 'fifa09.jpg'),
+(2, 'Grand Theft Auto IV', 'Rockstar', 18, '2008-10-10', 'GTA4.jpg'),
+(3, 'WWE Smackdown vs. Raw 2009 ', 'THQ', 18, '2008-11-07', 'SD_raw09.jpg'),
+(4, 'TNA Impact ', 'Midway', 15, '2008-09-12', 'TNAimpact.jpg'),
+(5, 'Star Wars: The Force Unleashed ', 'Activision', 12, '2008-09-19', 'SW_force.jpg'),
+(6, 'Kung Fu Panda', 'Activision', 7, '2008-06-27', 'KFpanda.jpg');
+SET IDENTITY_INSERT Games OFF;
+
+INSERT INTO Consoles(fkGameID, Console, Price) VALUES 
+( 1, 'DS', 24.99),
+( 1, 'PC', 24.99),
+( 1, 'PS2', 24.99),
+( 1, 'PS3', 39.99),
+( 1, 'PSP', 24.99),
+( 1, 'Wii', 29.99),
+( 1, 'Xbox 360', 39.99);
+
+INSERT INTO Consoles(fkGameID, Console, Price) VALUES 
+( 2, 'PC', 24.99),
+( 2, 'PS3', 39.99),
+( 2, 'Xbox 360', 32.99);
+
+INSERT INTO Consoles(fkGameID, Console, Price) VALUES 
+( 3, 'DS', 39.99),
+( 3, 'PS2', 24.99),
+( 3, 'PS3', 39.99),
+( 3, 'PSP', 24.99),
+( 3, 'Wii', 29.99),
+( 3, 'Xbox 360', 32.99);
+
+INSERT INTO Consoles(fkGameID, Console, Price) VALUES 
+( 4, 'PS2', 16.99),
+( 4, 'PS3', 34.99),
+( 4, 'PSP', 24.99),
+( 4, 'Wii', 26.99),
+( 4, 'Xbox 360', 29.99);
+
+INSERT INTO Consoles(fkGameID, Console, Price) VALUES 
+( 5, 'DS', 34.99),
+( 5, 'PS2', 24.99),
+( 5, 'PS3', 39.99),
+( 5, 'PSP', 24.99),
+( 5, 'Wii', 29.99),
+( 5, 'Xbox 360', 39.99);
+
+INSERT INTO Consoles(fkGameID, Console, Price) VALUES 
+( 6, 'DS', 24.99),
+( 6, 'PC', 16.99),
+( 6, 'PS2', 24.99),
+( 6, 'PS3', 24.99),
+( 6, 'Xbox 360', 29.99);
+
